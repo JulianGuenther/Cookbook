@@ -1,9 +1,11 @@
 package com.jguenther.cookbook.Services;
 
-import com.jguenther.cookbook.Ingredient;
+import com.jguenther.cookbook.Model.Ingredient;
 import com.jguenther.cookbook.Repositories.IngredientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class IngredientService {
@@ -19,11 +21,12 @@ public class IngredientService {
         return this.ingredientRepository.save(ingredient);
     }
 
-    public void removeIngredient(Ingredient ingredient) {
+    public void deleteIngredient(Ingredient ingredient) {
         this.ingredientRepository.delete(ingredient);
     }
 
-    public Ingredient getIngredientByName(String name) {
-       return this.ingredientRepository.findByName(name);
+    public Ingredient findIngredientById(long id) {
+        Optional<Ingredient> ingr = this.ingredientRepository.findById(id);
+        return ingr.orElse(null);
     }
 }

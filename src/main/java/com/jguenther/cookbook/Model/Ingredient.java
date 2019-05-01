@@ -1,4 +1,4 @@
-package com.jguenther.cookbook;
+package com.jguenther.cookbook.Model;
 
 import lombok.Getter;
 import lombok.Setter;
